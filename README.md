@@ -1,2 +1,1 @@
-# pluv
-The PLUVest bot
+![pluv](pluv.png)
