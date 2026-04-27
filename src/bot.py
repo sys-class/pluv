@@ -5,6 +5,7 @@ from pathlib import Path
 
 import discord
 from discord.ext import commands
+from discord import app_commands
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -30,7 +31,9 @@ class PluvBot(commands.Bot):
 bot = PluvBot()
 
 
-@bot.tree.command(name="pluv", description="pluv")
+@bot.tree.command(name="pluv", description="send pluv")
+@app_commands.allowed_installs(guilds=True, users=True)
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def slash_pluv(interaction: discord.Interaction) -> None:
     if not IMAGE.is_file():
         await interaction.response.send_message(
